@@ -1,0 +1,5 @@
+- Private Messaging (Chat) in OtherProfile
+
+- Add Comments like in Imageboard
+
+ 
