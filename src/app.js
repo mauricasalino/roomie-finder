@@ -12,6 +12,7 @@ import axios from "./axios";
 import { Chat } from './chat';
 import { PrivateChat } from "./privateChat";
 import Matches from "./matches";
+import Usermenu from "./usermenu";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -54,7 +55,7 @@ export default class App extends React.Component {
             <BrowserRouter>
                 <div className="page-wrapper">
                     <div className = "header-wrapper">
-                        <p><Link to="/profile"><img src="profilelogo.png" /></Link></p>
+                        <p><Link to="/usermenu"><img src="profilelogo.png" /></Link></p>
                         <p><Link to="/friends"><img src="logo.jpg" /></Link></p>
                         <p><Link to="/matches"><img src="chat.png" /></Link></p>
                     </div>
@@ -105,7 +106,7 @@ export default class App extends React.Component {
                                 />
                             )}
                         />
-                        <Route path="/profile" render={props => <Profile />} />
+                        <Route path="/usermenu" render={props => <Usermenu />} />
                         <Route path="/friends" render={props => <Friends />} />
                         <Route exact path="/matches" component={Matches} />
                     </div>
