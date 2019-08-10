@@ -55,7 +55,7 @@ export default class App extends React.Component {
             <BrowserRouter>
                 <div className="page-wrapper">
                     <div className = "header-wrapper">
-                        <p><Link to="/usermenu"><img src="profilelogo.png" /></Link></p>
+                        <p><Link to="/profile"><img src="profilelogo.png" /></Link></p>
                         <p><Link to="/friends"><img src="logo.jpg" /></Link></p>
                         <p><Link to="/matches"><img src="chat.png" /></Link></p>
                     </div>
@@ -106,7 +106,7 @@ export default class App extends React.Component {
                                 />
                             )}
                         />
-                        <Route path="/usermenu" render={props => <Usermenu />} />
+                        <Route path="/profile" render={props => <Profile />} />
                         <Route path="/friends" render={props => <Friends />} />
                         <Route exact path="/matches" component={Matches} />
                     </div>

@@ -38,16 +38,6 @@ export default class Usermenu extends React.Component {
         return (
             <div className = "profile-wrapper">
                 <img src="./logo.JPG" className="logo-welcome" />
-                <div className="navmenu">
-                    <ul>
-                        <li><Link to="/FindPeople">Find a Roomie</Link></li>
-                        <li><Link to="/profile">Edit your Profile</Link></li>
-                        <li><Link to="/friends">FIND Matches</Link></li>
-                        <li><Link to="/matches">SEE Matches</Link></li>
-                        <li><Link to="/chat">General Chat</Link></li>
-                        <li><a href="/logout">Log Out</a></li>
-                    </ul>
-                </div>
                 <div className = "header-right-wrapper">
                     {this.state.uploaderIsVisible && (
                         <Uploader

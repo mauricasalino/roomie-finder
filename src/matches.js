@@ -29,10 +29,11 @@ export default function Matches() {
                         return (
                             <div key={friends.id}>
                                 <img
-                                    width={200}
-                                    height={200}
+                                    className="profile-pic-img"
+                                    width={500}
+                                    height={500}
                                     src={friends.imageurl} />
-                                <h3>
+                                <h3 className="bio-text-container">
                                     {friends.first} {friends.last}
                                 </h3>
                                 <button className="myButton"

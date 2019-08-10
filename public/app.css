@@ -12,7 +12,7 @@
 
 .tinder {
   width: 100vw;
-  height: 100vh;
+  max-height: 95vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -89,6 +89,8 @@
 .tinder--card img {
   max-width: 100%;
   pointer-events: none;
+  border-radius: 50px;
+box-shadow: 0px 10px 50px #555;
 }
 
 .tinder--card h3 {
@@ -107,6 +109,9 @@ bottom: 0px;
   font-size: 20px;
   padding: 0 16px;
   pointer-events: none;
+  border-radius: 10px;
+  box-shadow: 0px 10px 50px #555;
+  margin-top: 35px;
 }
 
 .tinder--buttons {
@@ -221,6 +226,16 @@ main {
     text-align: center;
 }
 
+.profile-pic-img {
+    border-radius: 10px;
+    box-shadow: 0px 10px 50px #555;
+    margin-top: 35px;
+}
+
+.bio-text-container {
+    font-size: 70px;
+}
+
 .myButton {
 	-moz-box-shadow:inset 0px 1px 0px 0px #fff6af;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #fff6af;
@@ -241,7 +256,7 @@ main {
 	cursor:pointer;
 	color:#333333;
 	font-family:Arial;
-	font-size:15px;
+	font-size:50px;
 	font-weight:bold;
 	padding:6px 24px;
 	text-decoration:none;
@@ -286,7 +301,6 @@ main {
   align-items: flex-start;
   box-shadow: 0px 10px 50px #555;
   background-size: cover;
-  background-color: #258ea6;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
@@ -376,10 +390,6 @@ li a:hover {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-.header-right-wrapper.img {
-    width: 100px;
-}
-
 
 .header-right-wrapper {
   width: auto;
@@ -404,7 +414,8 @@ h1 {
   text-align: center;
   width: 100%;
   color: #111;
-  font-weight: lighter;
+  font-size: 80px;
+  font-weight: bold;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }

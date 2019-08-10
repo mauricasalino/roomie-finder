@@ -1,16 +1,10 @@
 import React from 'react';
 import Uploader from './uploader';
-import Profile from './profile';
 import ProfilePic from './profilepic';
 import BioEditor from "./bioEditor";
-import OtherProfile from "./otherprofile";
 import { Route, BrowserRouter } from "react-router-dom";
-import FindPeople from "./findpeople";
-import Friends from "./friends";
 import { Link } from 'react-router-dom';
 import axios from "./axios";
-import { Chat } from './chat';
-import { PrivateChat } from "./privateChat";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -61,31 +55,21 @@ export default class App extends React.Component {
                             onClick={() => this.setState({
                                 uploaderIsVisible: true
                             })}/>
+                        <BioEditor
+                            id={this.state.id}
+                            imageurl = {this.state.imageurl}
+                            first = {this.state.first}
+                            last = {this.state.last}
+                            bio = {this.state.bio}
+                            inputStyle={{ fontSize: '1.5rem' }}
+                            onClick={() => this.setState({
+                                uploaderIsVisible: true
+                            })}/>
                     </div>
                 </div>
-                <Route
-                    path="/user/:id"
-                    render={props => (
-                        <OtherProfile
-                            key={props.match.imageurl}
-                            match={props.match}
-                            history={props.history}
-                        />
-                    )}
-                />
-                <Route
-                    path="/chat/:id"
-                    render={props => (
-                        <PrivateChat
-                            key={props.match.url}
-                            match={props.match}
-                            history={props.history}
-                        />
-                    )}
-                />
-                <Route path="/findpeople" render={props => <FindPeople />} />
-                <Route path="/friends" render={props => <Friends />} />
-                <Route exact path="/chat" component={Chat} />
+
+
+
             </BrowserRouter>
         );
     }

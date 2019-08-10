@@ -36,7 +36,7 @@ export default class BioEditor extends React.Component {
             <div>
                 {this.props.bio && (
                     <div>
-                        <p>{this.props.bio}</p>
+                        <p className="bio-text-container">{this.props.bio}</p>
                         <button className="myButton"
                             onClick={e =>
                                 this.setState({
@@ -53,6 +53,9 @@ export default class BioEditor extends React.Component {
                     <div>
                         <textarea
                             name="draftBio"
+                            cols={20}
+                            rows={5}
+                            className="bio-text-container"
                             onChange={e => this.handleChange(e)}
                         />
                         <button className="myButton" onClick={e => this.submit()}>Save</button>
