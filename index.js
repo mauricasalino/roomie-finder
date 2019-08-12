@@ -52,7 +52,7 @@ io.on("connection", async socket => {
     //here we're grabbing their userId
     let userId = socket.request.session.userId;
 
-    const newUserConnected = {
+    let newUserConnected = {
         userid: userId,
         [userId]: socket.id
     };
@@ -89,6 +89,15 @@ io.on("connection", async socket => {
         io.sockets.emit("newChatMessage", result);
     });
 
+    //--------------------- last private messages -------------------------
+    //
+    socket.on("get last private messages", async id => {
+        const data = await db.lastPrivateMessages(id.receiver_id, userId);
+        // console.log("last private messages", data.rows);
+
+        io.emit("privateMessages", data.rows);
+    });
+
     //--------------------- private messages -------------------------
 
     socket.on("private message", async (msg, id) => {
@@ -105,7 +114,7 @@ io.on("connection", async socket => {
 
         const dataForPm = { ...privateMessage.rows[0], ...sender.rows[0] };
 
-        const newUserConnected = {
+        let newUserConnected = {
             userid: userId,
             [userId]: socket.id
         };
@@ -116,7 +125,7 @@ io.on("connection", async socket => {
 
         let senderId = usersConnectedNow.filter(i => i.userid == userId);
 
-        console.log("data for pm", dataForPm);
+        // console.log("data for pm", dataForPm);
 
         receiverId.forEach(i =>
             io.to(i[id.receiver_id]).emit("newPrivateMessage", dataForPm)
@@ -127,39 +136,15 @@ io.on("connection", async socket => {
         );
     });
 
-    // ----------------------------------wall---------------------------------------
-
-    socket.on('wallpost', async (val, id) => {
-        console.log(`post from ${userId} to ${id.receiver_id}: ${val}`);
-
-        let newPost = await db.addWallPost(userId, id.receiver_id, val);
-        console.log("newPost.rows", newPost.rows);
-        io.emit('newWallPost', newPost);
-
-        console.log("id.receiver_id", id.receiver_id);
-
-        let getWallPost = await db.getWallPost(id.receiver_id);
-        console.log("getWallPost", getWallPost.rows);
-
-        io.emit('oldWallPost', getWallPost.rows);
-
-        getWallPost.rows.forEach(wallpost => {
-            wallpost.created_at = moment(wallpost.created_at, moment.ISO_8601).fromNow();
-        });
-    });
-
-
-    // ----------------------------------wall---------------------------------------
-
     socket.on("disconnect", () => {
         console.log(`A socket with the id ${socket.id} just disconnected.`);
-        // const socketDisconnected = socket.id;
+        const socketDisconnected = socket.id;
         // console.log("socketToRemove:", socketDisconnected);
-        // usersConnectedNow = usersConnectedNow.filter(
-        //     i => i[userId] !== socketDisconnected
-        // );
+        let usersConnectedNow = usersConnectedNow.filter(
+            i => i[userId] !== socketDisconnected
+        );
 
-        // console.log("new users that are connected", usersConnectedNow);
+        console.log("new users that are connected", usersConnectedNow);
     });
 });
 
@@ -326,11 +311,6 @@ app.post("/getbutton/cancel/:id", async function(req, res) {
         console.log("err in post cancel getbutton", err);
     }
 });
-
-// app.get("/find-users/:str/json", async (req, res) => {
-//     let result = await db.getUsersByName(req.params.str);
-//     res.json({ data: result.rows });
-// });
 
 app.get("/users/2/:val.json", async function(req, res) {
     try {

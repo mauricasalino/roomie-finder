@@ -37,7 +37,7 @@ export async function acceptRequest(id) {
 
 export async function cancelRequest(id) {
     const cancel = await axios.post("/getbutton/cancel/" + id);
-    console.log("accept friend request worked", cancel);
+    console.log("cancel friend request worked", cancel);
     return {
         type: "CANCEL_REQUEST",
         id

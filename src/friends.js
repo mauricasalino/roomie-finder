@@ -10,7 +10,7 @@ export default function Friends() {
     );
     const wannabes = useSelector(
         state =>
-            state.users && state.users.filter(user => user.accepted == false)
+            state.users && state.users.filter(user => user.accepted == false || user.cancelled != true)
     );
 
     useEffect(() => {
