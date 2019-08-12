@@ -45,7 +45,7 @@ export default class Login extends React.Component{
                     div className = "form-wrapper" >
                     <
                         h1 > Log in<br/>
-                            to find<br/> your next roomie
+                            to find<br/> your next roomie<br></br><br></br>
                     < /h1>
 
                     <

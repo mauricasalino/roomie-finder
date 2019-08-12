@@ -112,11 +112,7 @@ io.on("connection", async socket => {
         );
 
         const sender = await db.getUserInfo(userId);
-        console.log("privateMessage.rows[0]", privateMessage.rows[0]);
-        privateMessage.rows[0].created_at = moment(
-            privateMessage.rows[0].created_at,
-            moment.ISO_8601
-        ).fromNow();
+        console.log("sender.rows:", sender.rows);
         const dataForPm = { ...privateMessage.rows[0], ...sender.rows[0] };
 
         // console.log("dataForPm", dataForPm);

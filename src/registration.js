@@ -49,8 +49,8 @@ export default class Registration extends React.Component{
                 <
                     div className = "form-wrapper" >
                     <
-                        h1 > Create<br/>your<br/> Account<br/>
-                            to find<br/> your next roomie
+                        h1 className="h1-registration"> Create<br/>your<br/> Account<br/>
+                            to find<br/> your next roomie<br></br><br></br>
                     < /h1>
 
                     <

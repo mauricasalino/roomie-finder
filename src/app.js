@@ -46,9 +46,10 @@ export default class App extends React.Component {
             <BrowserRouter>
                 <div className="page-wrapper">
                     <div className = "header-wrapper">
-                        <p><Link to="/profile"><img src="profilelogo.png" /></Link></p>
-                        <p><Link to="/friends"><img src="logo.jpg" /></Link></p>
-                        <p><Link to="/matches"><img src="chat.png" /></Link></p>
+                        <p className="nav-button"><Link to="/profile"><img src="profilelogo.png" /></Link></p>
+                        <p className="nav-button"><Link to="/friends"><img src="logo.jpg" /></Link></p>
+                        <p className="nav-button"><Link to="/matches"><img src="chat.png" /></Link></p>
+                        <p className="nav-button"><a href="/logout"><img src="logout.png" /></a></p>
                     </div>
                     <div className="profile-wrapper">
                         <Route

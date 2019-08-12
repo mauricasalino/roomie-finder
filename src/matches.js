@@ -38,19 +38,19 @@ export default function Matches() {
                                 <h3 className="bio-text-container">
                                     {friends.first} {friends.last}
                                 </h3>
+                                <Link
+                                    className="myButton"
+                                    to={`/chat/${friends.id}`}
+                                >
+                                                Send Private Message
+                                </Link>
                                 <button className="myButton"
                                     onClick={e =>
                                         dispatch(endFriendship(friends.id))
                                     }
                                 >
                                     End Friendship
-                                </button>
-                                <Link
-                                    className="myButton"
-                                    to={`/chat/${friends.id}`}
-                                >
-                                                Chat
-                                </Link>
+                                </button> <br></br>
                             </div>
                         );
                     })}
