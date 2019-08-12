@@ -93,6 +93,24 @@
     height: 200px;
 }
 
+.bio-title {
+    background-color: white;
+    font-size: 100px;
+    margin-bottom: -40px;
+    margin-top: 10px;
+    background-color: yellow;
+    border: 1px solid black;
+padding-right: 100px;
+padding-left: 100px;
+}
+
+.bio-text {
+    font-size: 7vw;
+    background-color: orange;
+    border: 1px solid black;
+padding: 100px 100px 100px 100px;
+}
+
 .tinder--card img {
   max-width: 100%;
   pointer-events: none;
@@ -103,22 +121,25 @@ box-shadow: 0px 10px 50px #555;
 .tinder--card h3 {
     border-radius: 10px;
     background-color: white;
-  margin-top: 32px;
+  margin-bottom: 140px;
   font-size: 90px;
   padding: 0 16px;
   pointer-events: none;
   position: absolute;
 bottom: 0px;
+opacity: 0.9;
 }
 
 .tinder--card p {
-  margin-top: 24px;
-  font-size: 20px;
+    background-color: white;
+    font-size: 45px;
+    align-content: flex-end;
+    margin-top: 960px;
   padding: 0 16px;
   pointer-events: none;
   border-radius: 10px;
   box-shadow: 0px 10px 50px #555;
-  margin-top: 35px;
+  opacity: 0.9;
 }
 
 .tinder--buttons {

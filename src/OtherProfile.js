@@ -29,18 +29,18 @@ export default class OtherProfile extends React.Component {
                     width={500}
                     height={500}
                     alt={`${this.state.first} ${this.props.last}`}
-                />
+                /><br></br><br></br>
                 <FriendButton id={this.props.match.params.id} />
                 <Link
                     className="myButton"
                     to={`/chat/${this.props.match.params.id}`}
                 >
-                                Chat
+                                Send Private Message
                 </Link>
-                <h4 className="profile-welcome">
+                <h4 className="bio-title">
                     {this.state.first} {this.state.last}
                 </h4>
-                <p className="profile-welcome">{this.state.bio}</p>
+                <p className="bio-text">{this.state.bio}</p>
             </div>
         );
     }

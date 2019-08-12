@@ -120,7 +120,7 @@ exports.cancelRequest = function cancelRequest(sender_id, receiver_id) {
 
 exports.getListOfUsers = function getListOfUsers(id) {
     return db.query(
-        "SELECT users.id, first, last, imageurl, accepted FROM friendships JOIN users ON (accepted = false AND receiver_id =$1 AND sender_id = users.id) OR (accepted = true AND receiver_id = $1 AND sender_id = users.id) OR (accepted = true AND sender_id = $1 AND receiver_id = users.id)",
+        "SELECT users.id, first, last, bio, imageurl, accepted FROM friendships JOIN users ON (accepted = false AND receiver_id =$1 AND sender_id = users.id) OR (accepted = true AND receiver_id = $1 AND sender_id = users.id) OR (accepted = true AND sender_id = $1 AND receiver_id = users.id)",
         [id]
     );
 };
@@ -156,40 +156,5 @@ exports.getReceiver = function(id) {
     return db.query(
         "SELECT first AS receiver_first, last AS receiver_last, imageurl AS receiver_imageurl FROM users WHERE users.id=$1",
         [id]
-    );
-};
-
-exports.addWallPost = function addWallPost (sender_id, receiver_id, wall) {
-    return db.query (
-        `
-        INSERT INTO wall (sender_id_wall, receiver_id_wall, wall) VALUES ($1, $2, $3) RETURNING *
-        `, [sender_id, receiver_id, wall]
-    );
-};
-
-// exports.getWallPost = function getWallPost () {
-//     return db.query (
-//         `
-//         SELECT wall.id, sender_id_wall, wall.wall, wall.created_at, users.first, users.last, users.imageurl
-//         FROM wall
-//         LEFT JOIN users
-//         ON users.id = wall.receiver_id_wall
-//         ORDER BY wall.created_at DESC
-//         LIMIT 20
-//         `,
-//     );
-// };
-
-exports.getWallPost = function getWallPost (id) {
-    return db.query (
-        `
-        SELECT wall.id, sender_id_wall, wall.wall, wall.created_at, users.first, users.last, users.imageurl
-        FROM wall
-        LEFT JOIN users
-        ON users.id = wall.receiver_id_wall
-        WHERE receiver_id_wall = $1
-        ORDER BY wall.created_at DESC
-        LIMIT 20
-        `,[id]
     );
 };

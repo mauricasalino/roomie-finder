@@ -26,7 +26,7 @@ export default function Friends() {
                 className="tinder"
                 style={{ borderBottom: "solid 2px black" }}
             >
-                <h1>Check who wants to be your roomie!</h1>
+                <h1>Check who wants to be your roomie! 😜😜😜</h1>
                 {wannabes &&
                     wannabes.map(wannabes => {
                         return (
@@ -39,7 +39,7 @@ export default function Friends() {
                                     <h3>
                                         {wannabes.first} {wannabes.last}
                                     </h3>
-                                    <p>
+                                    <p className="bio-matches">
                                         {wannabes.bio}
                                     </p>
 
