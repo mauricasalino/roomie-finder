@@ -5,14 +5,14 @@ import ProfilePic from './profilepic';
 import BioEditor from "./bioEditor";
 import OtherProfile from "./otherprofile";
 import { Route, BrowserRouter } from "react-router-dom";
-import FindPeople from "./findpeople";
+// import FindPeople from "./findpeople";
 import Friends from "./friends";
 import { Link } from 'react-router-dom';
 import axios from "./axios";
-import { Chat } from './chat';
+// import { Chat } from './chat';
 import { PrivateChat } from "./privateChat";
 import Matches from "./matches";
-import Usermenu from "./usermenu";
+// import Usermenu from "./usermenu";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -25,12 +25,6 @@ export default class App extends React.Component {
 
     async componentDidMount() {
         console.log("componentDidMount");
-        // const script = document.createElement("script");
-        // script.src = "/scriptswipecards.js";
-        // script.async = true;
-        // script.onload = () => this.scriptLoaded();
-
-        // document.body.appendChild(script);
         try {
             const { data } = await axios.get("/user");
             console.log("data", data);
@@ -39,9 +33,6 @@ export default class App extends React.Component {
             console.log("err in GET /user", err);
         }
     }
-    // scriptLoaded() {
-    //     window.A.sort();
-    // }
 
     render() {
         console.log("this.state: ", this.state);
@@ -68,11 +59,8 @@ export default class App extends React.Component {
                                     first={this.state.first}
                                     last={this.state.last}
                                     bio={this.state.bio}
-                                    bioEditor={
-                                        <BioEditor
-                                            bio={this.state.bio}
-                                            setBio={data => this.setState({ bio: data })}
-                                        />}
+                                    setBio={data => this.setState({ bio: data })}
+
                                     profilePic={
                                         <ProfilePic
                                             first={this.state.first}
@@ -106,8 +94,17 @@ export default class App extends React.Component {
                                 />
                             )}
                         />
-                        <Route path="/profile" render={props => <Profile />} />
-                        <Route path="/friends" render={props => <Friends />} />
+                        <Route path="/profile" render={() => <Profile
+                            first={this.state.first}
+                            last={this.state.last}
+                            bio={this.state.bio}
+                            setBio={data => this.setState({ bio: data })}
+                        />} />
+                        <Route path="/friends" render={props => <Friends
+                            first={this.state.first}
+                            last={this.state.last}
+                            bio={this.state.bio}
+                        />} />
                         <Route exact path="/matches" component={Matches} />
                     </div>
                 </div>

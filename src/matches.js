@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { receiveFriends, endFriendship } from "./actions";
+import { Link } from "react-router-dom";
+import axios from "./axios";
 
 export default function Matches() {
     const dispatch = useDispatch();
@@ -12,6 +14,29 @@ export default function Matches() {
         state =>
             state.users && state.users.filter(user => user.accepted == false)
     );
+    // async componentDidMount => {
+    //     try {
+    //         const id = this.props.match.params.id;
+    //         const { data } = await axios.get(`/user/api/${id}.json`);
+    //         // console.log("data", data);
+    //         if (data.sameUser) {
+    //             this.props.history.push("/");
+    //         } else if (data.noUser) {
+    //             this.setState({
+    //                 noUser: true
+    //             });
+    //         } else {
+    //             this.setState({
+    //                 first: data.first,
+    //                 last: data.last,
+    //                 bio: data.bio,
+    //                 image: data.image
+    //             });
+    //         }
+    //     } catch (err) {
+    //         console.log("err in GET /user/id", err);
+    //     }
+    // };
 
     useEffect(() => {
         dispatch(receiveFriends());
@@ -43,6 +68,7 @@ export default function Matches() {
                                 >
                                     End Friendship
                                 </button>
+                                
                             </div>
                         );
                     })}

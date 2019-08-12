@@ -22,7 +22,7 @@ export default class BioEditor extends React.Component {
             const { data } = await axios.post("/bio", {
                 draftBio: this.state.draftBio
             });
-            console.log("data", data);
+            console.log("data", this.props);
             this.props.setBio(data);
             this.setState({
                 editing: false
@@ -53,8 +53,8 @@ export default class BioEditor extends React.Component {
                     <div>
                         <textarea
                             name="draftBio"
-                            cols={20}
-                            rows={5}
+                            cols={10}
+                            rows={3}
                             className="bio-text-container"
                             onChange={e => this.handleChange(e)}
                         />

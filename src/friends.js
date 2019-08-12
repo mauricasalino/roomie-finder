@@ -45,15 +45,15 @@ export default function Friends() {
 
                                 </div>
 
-                                <div className="tinder-buttons">
-                                    <button className="myButton"
+                                <div>
+                                    <button
                                         onClick={e =>
                                             dispatch(cancelRequest(wannabes.id))
                                         }
                                     >
                                         <img src="nope.png" />
                                     </button>
-                                    <button className="myButton"
+                                    <button
                                         onClick={e =>
                                             dispatch(acceptRequest(wannabes.id))
                                         }
