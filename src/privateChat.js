@@ -36,13 +36,14 @@ export function PrivateChat(props) {
                 {message &&
                     message.map(msg => (
                         <div className="chat-box" key={msg.id}>
-                            <img
-                                style={{ height: "50px", width: "50px", borderRadius: "10px" }}
-                                src={msg.imageurl}
-                                alt={`${msg.first} ${msg.last}`}
-                            />
                             <h2 className="chat-name">
-                                {msg.first} {msg.last}
+                                <img
+                                    style={{ height: "200px", width: "200px", borderRadius: "10px" }}
+                                    src={msg.imageurl}
+                                    alt={`${msg.first} ${msg.last}`}
+                                />
+                                &nbsp;&nbsp;&nbsp;
+                                {msg.first} {msg.last} said:
                             </h2>
                             <div className="message">
                                 <p className="chat-message">{msg.message}</p>

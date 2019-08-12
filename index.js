@@ -110,9 +110,20 @@ io.on("connection", async socket => {
             userId,
             id.receiver_id
         );
-        const sender = await db.getUserInfo(userId);
 
+        const sender = await db.getUserInfo(userId);
+        console.log("privateMessage.rows[0]", privateMessage.rows[0]);
+        privateMessage.rows[0].created_at = moment(
+            privateMessage.rows[0].created_at,
+            moment.ISO_8601
+        ).fromNow();
         const dataForPm = { ...privateMessage.rows[0], ...sender.rows[0] };
+
+        // console.log("dataForPm", dataForPm);
+        //
+        // dataForPm[5].forEach(i => {
+        //     i.created_at = moment(i.created_at, moment.ISO_8601).fromNow();
+        // });
 
         let newUserConnected = {
             userid: userId,
@@ -125,7 +136,7 @@ io.on("connection", async socket => {
 
         let senderId = usersConnectedNow.filter(i => i.userid == userId);
 
-        // console.log("data for pm", dataForPm);
+        //console.log("data for pm", dataForPm);
 
         receiverId.forEach(i =>
             io.to(i[id.receiver_id]).emit("newPrivateMessage", dataForPm)
@@ -140,7 +151,7 @@ io.on("connection", async socket => {
         console.log(`A socket with the id ${socket.id} just disconnected.`);
         const socketDisconnected = socket.id;
         // console.log("socketToRemove:", socketDisconnected);
-        let usersConnectedNow = usersConnectedNow.filter(
+        usersConnectedNow.filter(
             i => i[userId] !== socketDisconnected
         );
 

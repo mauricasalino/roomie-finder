@@ -169,11 +169,27 @@ bottom: 0px;
     justify-content: space-around;
     border-radius: 30px;
     margin-bottom: 10px;
+    font-size: 60px;
 }
 
 .big-chat-container {
     display: flex;
     flex-direction: column;
+}
+
+.chat-textarea {
+    font-size: 60px;
+    width: 100%;
+}
+
+.chat-name {
+    display: flex;
+}
+
+.chat-box {
+    display: flex;
+flex-direction: column;
+font-size: 40px;
 }
 
 .chat-container {
@@ -184,6 +200,8 @@ bottom: 0px;
     padding: 20px 40px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px #555;
+    height: 1000px;
+    margin-top: 40PX;
 }
 
 .enter-textarea {
