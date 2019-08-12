@@ -5,7 +5,7 @@ import ProfilePic from './profilepic';
 import BioEditor from "./bioEditor";
 import OtherProfile from "./otherprofile";
 import { Route, BrowserRouter } from "react-router-dom";
-// import FindPeople from "./findpeople";
+import FindPeople from "./findpeople";
 import Friends from "./friends";
 import { Link } from 'react-router-dom';
 import axios from "./axios";
@@ -49,6 +49,7 @@ export default class App extends React.Component {
                         <p className="nav-button"><Link to="/profile"><img src="profilelogo.png" /></Link></p>
                         <p className="nav-button"><Link to="/friends"><img src="logo.jpg" /></Link></p>
                         <p className="nav-button"><Link to="/matches"><img src="chat.png" /></Link></p>
+                        <p className="nav-button"><Link to="/FindPeople"><img src="search.png" /></Link></p>
                         <p className="nav-button"><a href="/logout"><img src="logout.png" /></a></p>
                     </div>
                     <div className="profile-wrapper">
@@ -107,6 +108,7 @@ export default class App extends React.Component {
                             bio={this.state.bio}
                         />} />
                         <Route exact path="/matches" component={Matches} />
+                        <Route path="/findpeople" render={props => <FindPeople />} />
                     </div>
                 </div>
             </BrowserRouter>

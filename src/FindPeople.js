@@ -30,31 +30,22 @@ export default function FindPeople() {
         <div>
             <h1>FIND YOUR NEXT ROOMIE HERE: <input onChange={e => setVal(e.target.value)} /></h1>
 
-            {firstRender && <h3 className="lastjoined">Check out who just joined!</h3>}
+            {firstRender && <h3 className="lastjoined">Check out the New Joiners!</h3>}
 
             <div>
                 {users &&
                     users.map(users => {
                         return (
-                            <div
-                                key={users.id}
-                                style={{
-                                    display: "grid",
-                                    gridTemplateColumns: "5rem 1fr"
-                                }}
-                            >
+                            <div key={users.id}>
                                 <Link to={`/user/${users.id}`}>
                                     <img
-                                        style={{
-                                            gridColumn: 1 / 2,
-                                            height: 5 + "rem",
-                                            width: 3.8 + "rem"
-                                        }}
+                                        className="profile-pic-img"
+                                        width={500}
+                                        height={500}
                                         src={users.imageurl}
-                                        alt={`${users.first} ${users.last}`}
-                                    />
+                                        alt={`${users.first} ${users.last}`}/>
                                 </Link>
-                                <h3 style={{ gridColumn: 2 / 3 }}>
+                                <h3 className="bio-text-container">
                                     {users.first} {users.last}
                                 </h3>
                             </div>

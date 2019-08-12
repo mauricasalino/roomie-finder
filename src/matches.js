@@ -30,11 +30,13 @@ export default function Matches() {
                     friends.map(friends => {
                         return (
                             <div key={friends.id}>
-                                <img
-                                    className="profile-pic-img"
-                                    width={500}
-                                    height={500}
-                                    src={friends.imageurl} />
+                                <Link to={`/user/${friends.id}`}>
+                                    <img
+                                        className="profile-pic-img"
+                                        width={500}
+                                        height={500}
+                                        src={friends.imageurl} />
+                                </Link>
                                 <h3 className="bio-text-container">
                                     {friends.first} {friends.last}
                                 </h3>

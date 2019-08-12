@@ -25,8 +25,9 @@ export default class OtherProfile extends React.Component {
             <div className="profile-description">
                 <img
                     src={this.state.imageurl}
-                    width={160}
-                    height={200}
+                    className="profile-pic-img"
+                    width={500}
+                    height={500}
                     alt={`${this.state.first} ${this.props.last}`}
                 />
                 <FriendButton id={this.props.match.params.id} />
@@ -36,11 +37,10 @@ export default class OtherProfile extends React.Component {
                 >
                                 Chat
                 </Link>
-                <h4>
+                <h4 className="profile-welcome">
                     {this.state.first} {this.state.last}
                 </h4>
-                <p>{this.state.bio}</p>
-                <Wall OtherId = {this.props.match.params.id}/>
+                <p className="profile-welcome">{this.state.bio}</p>
             </div>
         );
     }
